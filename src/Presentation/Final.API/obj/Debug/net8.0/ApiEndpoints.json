@@ -1,0 +1,23 @@
+[
+  {
+    "ContainingType": "Final.API.Controllers.MedicinesController",
+    "Method": "GetById",
+    "RelativePath": "api/Medicines/id",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "IsTracking",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

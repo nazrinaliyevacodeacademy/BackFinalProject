@@ -1,0 +1,11 @@
+C:\Users\user\source\repos\Final\src\Infrastructure\Final.Infrastructure\bin\Debug\net8.0\Final.Infrastructure.deps.json
+C:\Users\user\source\repos\Final\src\Infrastructure\Final.Infrastructure\bin\Debug\net8.0\Final.Infrastructure.dll
+C:\Users\user\source\repos\Final\src\Infrastructure\Final.Infrastructure\bin\Debug\net8.0\Final.Infrastructure.pdb
+C:\Users\user\source\repos\Final\src\Infrastructure\Final.Infrastructure\obj\Debug\net8.0\Final.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\source\repos\Final\src\Infrastructure\Final.Infrastructure\obj\Debug\net8.0\Final.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\user\source\repos\Final\src\Infrastructure\Final.Infrastructure\obj\Debug\net8.0\Final.Infrastructure.AssemblyInfo.cs
+C:\Users\user\source\repos\Final\src\Infrastructure\Final.Infrastructure\obj\Debug\net8.0\Final.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\Final\src\Infrastructure\Final.Infrastructure\obj\Debug\net8.0\Final.Infrastructure.dll
+C:\Users\user\source\repos\Final\src\Infrastructure\Final.Infrastructure\obj\Debug\net8.0\refint\Final.Infrastructure.dll
+C:\Users\user\source\repos\Final\src\Infrastructure\Final.Infrastructure\obj\Debug\net8.0\Final.Infrastructure.pdb
+C:\Users\user\source\repos\Final\src\Infrastructure\Final.Infrastructure\obj\Debug\net8.0\ref\Final.Infrastructure.dll

@@ -1,0 +1,37 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Final.Domain.Entities.Common;
+using Final.Persistence.Contexts;
+using Microsoft.EntityFrameworkCore;
+using Umbraco.Core.Persistence;
+
+namespace Final.Persistence.Concretes.Repositories
+{
+    public class WriteRepository<T> : IWriteRepository<T> where T : BaseEntity, new()
+    {
+        public void Delete(T entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Save(T entity)
+        {
+            throw new NotImplementedException();
+        }
+        private readonly FinalDbContext _context;
+        public WriteRepository(FinalDbContext context)
+        {
+            _context = context;
+        }
+
+        public DbSet<T> Table => _context.Set<T>();
+     
+        public async Task CreateAsync(T entity)
+        {
+            await Table.AddAsync(entity);
+        }
+    }
+}

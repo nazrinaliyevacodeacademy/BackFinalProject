@@ -1,0 +1,11 @@
+C:\Users\user\source\repos\Final\src\Core\Final.Domain\bin\Debug\net8.0\Final.Domain.deps.json
+C:\Users\user\source\repos\Final\src\Core\Final.Domain\bin\Debug\net8.0\Final.Domain.dll
+C:\Users\user\source\repos\Final\src\Core\Final.Domain\bin\Debug\net8.0\Final.Domain.pdb
+C:\Users\user\source\repos\Final\src\Core\Final.Domain\obj\Debug\net8.0\Final.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\source\repos\Final\src\Core\Final.Domain\obj\Debug\net8.0\Final.Domain.AssemblyInfoInputs.cache
+C:\Users\user\source\repos\Final\src\Core\Final.Domain\obj\Debug\net8.0\Final.Domain.AssemblyInfo.cs
+C:\Users\user\source\repos\Final\src\Core\Final.Domain\obj\Debug\net8.0\Final.Domain.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\Final\src\Core\Final.Domain\obj\Debug\net8.0\Final.Domain.dll
+C:\Users\user\source\repos\Final\src\Core\Final.Domain\obj\Debug\net8.0\refint\Final.Domain.dll
+C:\Users\user\source\repos\Final\src\Core\Final.Domain\obj\Debug\net8.0\Final.Domain.pdb
+C:\Users\user\source\repos\Final\src\Core\Final.Domain\obj\Debug\net8.0\ref\Final.Domain.dll
