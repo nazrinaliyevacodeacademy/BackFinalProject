@@ -41,7 +41,44 @@ public class MedicineService : IMedicineService
         MedicineGetDTO medicineGetDto = _mapper.Map<MedicineGetDTO>(medicine);
         return medicineGetDto;
 
-      
-
     }
+  
+    /*    public async Task<Guid> CreateMedicineAsync(MedicinePostDTO dto)
+        {
+            var medicine = _mapper.Map<Medicine>(dto);
+            await _writeRepository.CreateAsync(medicine);
+            return medicine.Id;
+        }*/
+
+        public async Task UpdateMedicineAsync(Guid id, MedicinePostDTO dto)
+        {
+            var medicine = await _readRepository.GetByIdAsync(id);
+            if (medicine == null)
+                throw new Exception("Medicine not found");
+
+            _mapper.Map(dto, medicine);
+            await _writeRepository.UpdateAsync(medicine);
+        }
+
+        public async Task DeleteMedicineAsync(Guid id)
+        {
+            await _writeRepository.DeleteAsync(id);
+        }
+
+        public async Task<MedicineGetDTO> GetMedicineByIdAsync(Guid id)
+        {
+            var medicine = await _readRepository.GetByIdAsync(id);
+            if (medicine == null)
+                throw new Exception("Medicine not found");
+
+            return _mapper.Map<MedicineGetDTO>(medicine);
+        }
+
+        public async Task<List<MedicineGetDTO>> GetAllMedicinesAsync()
+        {
+            var medicines = await _readRepository.GetAllAsync();
+            return _mapper.Map<List<MedicineGetDTO>>(medicines);
+        }
+    
+
 }

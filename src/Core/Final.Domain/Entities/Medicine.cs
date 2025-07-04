@@ -12,6 +12,7 @@ public  class Medicine:BaseEntity
 
     public string Name { get; set; } = null!;
     public string Manufacturer { get; set; } = null!;
+    public string  ImageUrl { get; set; }
     public float Price { get; set; }
     public int Stock { get; set; }
     public string Dosage { get; set; }

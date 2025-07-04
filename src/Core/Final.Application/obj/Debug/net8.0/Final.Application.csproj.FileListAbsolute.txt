@@ -13,3 +13,4 @@ C:\Users\user\source\repos\Final\src\Core\Final.Application\obj\Debug\net8.0\Fin
 C:\Users\user\source\repos\Final\src\Core\Final.Application\obj\Debug\net8.0\refint\Final.Application.dll
 C:\Users\user\source\repos\Final\src\Core\Final.Application\obj\Debug\net8.0\Final.Application.pdb
 C:\Users\user\source\repos\Final\src\Core\Final.Application\obj\Debug\net8.0\ref\Final.Application.dll
+C:\Users\user\source\repos\Final\src\Core\Final.Application\obj\Debug\net8.0\Final.Application.sourcelink.json

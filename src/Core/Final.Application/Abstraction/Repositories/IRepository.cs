@@ -10,5 +10,5 @@ namespace Final.Application.Abstraction.Repositories;
 
 public interface IRepository<T>  where T:BaseEntity, new()
 {
-    DbSet<T> Table {  get; }
+    DbSet<T> Table { get; }
 }

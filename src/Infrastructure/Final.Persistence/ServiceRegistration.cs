@@ -10,9 +10,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Final.Persistence.Concretes.Services;
 using Final.Application.Abstraction.Repositories;
 using Final.Application.Abstraction.Services;
+using Final.Persistence.Concretes.Services.Final.Persistence.Concretes.Services;
 
 namespace Final.Persistence;
-
 public static class ServiceRegistration
 {
     public static void AddPersistenceServices(this IServiceCollection services)
@@ -22,13 +22,15 @@ public static class ServiceRegistration
          {
              opt.UseSqlServer(ConfigManager.ConnectionStr);
          });
-
        /* Repositories*/
         services.AddScoped<IMedicineReadRepository, MedicineReadRepository>();
         services.AddScoped<IMedicineWriteRepository, MedicineWriteRepository>();
-
+        services.AddScoped<IUserReadRepository, UserReadRepository>();
+        services.AddScoped<IUserWriteRepository, UserWriteRepository>();
         /*Services*/
-
         services.AddScoped<IMedicineService, MedicineService>();
+        services.AddScoped<IAuthService, AuthService>();
+        services.AddScoped<IUserService, UserService>();
+        services.AddScoped<IJwtService, JwtService>();
     }
 }

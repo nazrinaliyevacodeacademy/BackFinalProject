@@ -12,26 +12,58 @@ namespace Final.Persistence.Concretes.Repositories
 {
     public class WriteRepository<T> : IWriteRepository<T> where T : BaseEntity, new()
     {
-        public void Delete(T entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Save(T entity)
-        {
-            throw new NotImplementedException();
-        }
-        private readonly FinalDbContext _context;
+        protected readonly FinalDbContext _context;
         public WriteRepository(FinalDbContext context)
         {
             _context = context;
         }
 
         public DbSet<T> Table => _context.Set<T>();
-     
+        public void Save(T entity)
+        {
+            throw new NotImplementedException();
+        }
+        public void Delete(T entity)
+        {
+            throw new NotImplementedException();
+        }
+
+
         public async Task CreateAsync(T entity)
         {
             await Table.AddAsync(entity);
+            await _context.SaveChangesAsync();
+        }
+
+    
+        public async Task UpdateAsync(T entity)
+        {
+            Table.Update(entity);
+            await _context.SaveChangesAsync();
+        }
+
+        /*  
+
+          public Task UpdateAsync(T entity)
+          {
+              Table.Update(entity);
+              return Task.CompletedTask;
+          }*/
+        
+      
+        public async Task DeleteAsync(Guid id)
+        {
+            var entity = await Table.FindAsync(id);
+            if (entity is not null)
+            {
+                Table.Remove(entity);
+                await _context.SaveChangesAsync(); 
+            }
+        }
+
+        public async Task SaveChangesAsync()
+        {
+            await _context.SaveChangesAsync();
         }
     }
 }

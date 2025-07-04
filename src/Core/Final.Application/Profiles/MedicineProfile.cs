@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
-using Final.Application.DTOs;
 using Final.Application.DTOs.Medicine;
+using Final.Application.DTOs.User;
 using Final.Domain.Entities;
 
 namespace Final.Application.Profiles
@@ -49,9 +49,9 @@ namespace Final.Application.Profiles
         */
         public MedicineProfile()
         {
-            CreateMap<User, UserDTO>().ReverseMap();
+          
             CreateMap<Medicine,MedicineGetDTO>().ReverseMap();
-           /*CreateMap<Prescription, PrescriptionDTO>().ReverseMap();*/
+ 
 
         }
     }

@@ -9,6 +9,7 @@ namespace Final.Application.Abstraction.Repositories
 {
     public interface IReadRepository<T>: IRepository<T> where T : BaseEntity, new()
     {
+        Task<List<T>> GetAllAsync(bool isTracking = false);
         Task<T> GetByIdAsync(Guid id,bool isTracking=false);
     }
 }

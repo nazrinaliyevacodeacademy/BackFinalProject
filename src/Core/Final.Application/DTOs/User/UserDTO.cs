@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Final.Application.DTOs;
+namespace Final.Application.DTOs.User;
 
 public class UserDTO
 {
     public Guid Id { get; set; }
-    public string FullName { get; set; } = null!;
-    public string Role { get; set; } = null!;
+    public string UserName { get; set; } = null!;
     public string Email { get; set; }
+    public string Role { get; set; } = null!;
+   
 }
 

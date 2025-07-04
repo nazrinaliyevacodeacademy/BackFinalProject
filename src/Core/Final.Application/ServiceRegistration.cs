@@ -18,6 +18,10 @@ namespace Final.Application
             {
                 cfg.RegisterServicesFromAssembly(typeof(ServiceRegistration).Assembly);
             });
+         
+
+
         }
     }
 }
+

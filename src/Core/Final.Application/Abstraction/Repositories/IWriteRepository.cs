@@ -9,6 +9,9 @@ namespace Final.Application.Abstraction.Repositories
 {
     public interface IWriteRepository<T> :IRepository<T> where T : BaseEntity, new()
     {
-        Task CreateAsync(T entity); 
+        Task CreateAsync(T entity);
+        Task UpdateAsync(T entity);
+        Task DeleteAsync(Guid id);
+        Task SaveChangesAsync();
     }
 }

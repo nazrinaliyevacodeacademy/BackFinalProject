@@ -9,3 +9,4 @@ C:\Users\user\source\repos\Final\src\Core\Final.Domain\obj\Debug\net8.0\Final.Do
 C:\Users\user\source\repos\Final\src\Core\Final.Domain\obj\Debug\net8.0\refint\Final.Domain.dll
 C:\Users\user\source\repos\Final\src\Core\Final.Domain\obj\Debug\net8.0\Final.Domain.pdb
 C:\Users\user\source\repos\Final\src\Core\Final.Domain\obj\Debug\net8.0\ref\Final.Domain.dll
+C:\Users\user\source\repos\Final\src\Core\Final.Domain\obj\Debug\net8.0\Final.Domain.sourcelink.json

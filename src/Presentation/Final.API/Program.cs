@@ -1,10 +1,17 @@
-
 using Final.Application.Profiles;
 using Final.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Final.Persistence;
 using Final.Application;
-using Final.Persistence.Contexts;
+using Final.Application.Validators.Users;
+using FluentValidation;
+using FluentValidation.AspNetCore;
+
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using System.Text;
+
 namespace Final.API
 {
     public class Program
@@ -13,33 +20,87 @@ namespace Final.API
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            // JWT setup
+            var jwtSettings = builder.Configuration.GetSection("Jwt");
+            var key = Encoding.UTF8.GetBytes(jwtSettings["Key"]!);
 
+            builder.Services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(options =>
+            {
+                options.RequireHttpsMetadata = false;
+                options.SaveToken = true;
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidIssuer = jwtSettings["Issuer"],
+                    ValidateAudience = true,
+                    ValidAudience = jwtSettings["Audience"],
+                    ValidateLifetime = true,
+                    ClockSkew = TimeSpan.Zero,
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key)
+                };
+            });
+
+            // Controllers & Swagger
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
-          /*  builder.Services.AddAutoMapper(typeof(MedicineProfile));*/
-           /*Services
-            DBContext*/
+
+            builder.Services.AddSwaggerGen(opt =>
+            {
+                opt.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Description = "Enter JWT like: Bearer {token}",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer"
+                });
+
+                opt.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Id = "Bearer",
+                                Type = ReferenceType.SecurityScheme
+                            }
+                        },
+                        Array.Empty<string>()
+                    }
+                });
+            });
+
+            // FluentValidation
+            builder.Services.AddValidatorsFromAssemblyContaining<CreateUserDTOValidator>();
+            builder.Services.AddValidatorsFromAssemblyContaining<UpdateUserDTOValidator>();
+            builder.Services.AddFluentValidationAutoValidation();
+
             builder.Services.AddPersistenceServices();
-            /*AutoMapper*/
             builder.Services.AddApplicationServices();
+
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
 
+            app.UseHttpsRedirection();
+        /*    app.UseMiddleware<ExceptionMiddleware>();*/
+            app.UseAuthentication();
             app.UseAuthorization();
 
-
             app.MapControllers();
-
             app.Run();
         }
     }
 }
+

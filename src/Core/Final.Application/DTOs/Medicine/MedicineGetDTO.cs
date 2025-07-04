@@ -9,12 +9,9 @@ namespace Final.Application.DTOs.Medicine;
 
 public class MedicineGetDTO
 {
-    //public Guid Id { get; set; }
-    //public string Name { get; set; } = null!;
-    //public decimal Price { get; set; }
     public Guid Id { get; set; }
     public string Name { get; set; } = null!;
-    public string Manufacturer { get; set; } = null!;   
+    public string Manufacturer { get; set; } 
     public float Price { get; set; }
     public int Stock { get; set; }
     public string Dosage { get; set; }

@@ -33,3 +33,4 @@ C:\Users\user\source\repos\Final\src\Infrastructure\Final.Persistence\bin\Debug\
 C:\Users\user\source\repos\Final\src\Infrastructure\Final.Persistence\bin\Debug\net8.0\x86\sqlcese40.dll
 C:\Users\user\source\repos\Final\src\Infrastructure\Final.Persistence\bin\Debug\net8.0\Final.Application.dll
 C:\Users\user\source\repos\Final\src\Infrastructure\Final.Persistence\bin\Debug\net8.0\Final.Application.pdb
+C:\Users\user\source\repos\Final\src\Infrastructure\Final.Persistence\obj\Debug\net8.0\Final.Persistence.sourcelink.json
