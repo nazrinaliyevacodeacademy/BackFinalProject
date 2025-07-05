@@ -53,5 +53,5 @@ namespace Final.Persistence.Contexts;
             .WithMany(m => m.PrescriptionMedicines)
             .HasForeignKey(pm => pm.MedicineId);
     }
-}
 
+}

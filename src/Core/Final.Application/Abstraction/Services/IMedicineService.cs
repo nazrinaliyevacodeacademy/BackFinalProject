@@ -9,11 +9,10 @@ namespace Final.Application.Abstraction.Services;
 
 public interface IMedicineService
 {
-    Task<MedicineGetDTO> GetMedicineByIdAsync(Guid id,bool isTracking=false);
+    Task<MedicineGetDTO> GetMedicineByIdAsync(Guid id);
+    Task<List<MedicineGetDTO>> GetAllMedicinesAsync();
     Task CreateMedicineAsync(MedicinePostDTO medicinePostDTO);
     Task UpdateMedicineAsync(Guid id, MedicinePostDTO medicinePostDTO);
     Task DeleteMedicineAsync(Guid id);
-Task<MedicineGetDTO> GetMedicineByIdAsync(Guid id);
-Task<List<MedicineGetDTO>> GetAllMedicinesAsync();
-    /* Task<List<MedicineGetDTO>> GetAllMedicinesAsync(bool isTracking = false);*/
+
 }

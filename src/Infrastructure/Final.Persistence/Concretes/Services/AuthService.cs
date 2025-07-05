@@ -46,7 +46,7 @@ namespace Final.Persistence.Concretes.Services
                     UserName = dto.UserName,
                     Email = dto.Email,
                     PasswordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password),
-                    Role = UserRole.Patient  // Lazımdırsa dəyişə bilərsən
+                    Role = UserRole.Patient 
                 };
 
                 _context.Users.Add(user);
@@ -60,7 +60,7 @@ namespace Final.Persistence.Concretes.Services
                     Success = true,
                     Message = "Registered successfully",
                     Token = token,
-                    ExpireAt = DateTime.UtcNow.AddHours(1) // Tokenun bitmə vaxtı (nümunə)
+                    ExpireAt = DateTime.UtcNow.AddHours(1) 
                 };
             }
 

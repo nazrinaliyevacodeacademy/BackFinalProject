@@ -14,5 +14,7 @@ public class MedicineWriteRepository : WriteRepository<Medicine>, IMedicineWrite
     public MedicineWriteRepository(FinalDbContext context) : base(context)
     {
     }
+
+   
 }
 

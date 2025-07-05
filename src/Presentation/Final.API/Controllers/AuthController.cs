@@ -34,20 +34,7 @@ namespace Final.API.Controllers
                 return Unauthorized(result.Message);
             return Ok(result);
         }
-     /*   [HttpPost("login")]
-        public async Task<IActionResult> Login(LoginDto dto)
-        {
-            var user = await _userService.ValidateUser(dto.UserName, dto.Password);
-            if (user == null)
-                return Unauthorized("Invalid credentials");
 
-            var token = _jwtService.GenerateToken(user);
-            return Ok(new { token });
-        }*/
-
-/* 
- 
- */
     }
 
 }

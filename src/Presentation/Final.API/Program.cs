@@ -11,6 +11,10 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
+using Final.API.Middlewares;
+using Final.Application.Validators.Medicine;
+using Microsoft.Extensions.DependencyInjection;
+using Final.Application.Features.Commands.Users.CreateUser;
 
 namespace Final.API
 {
@@ -19,6 +23,7 @@ namespace Final.API
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 
             // JWT setup
             var jwtSettings = builder.Configuration.GetSection("Jwt");
@@ -76,15 +81,17 @@ namespace Final.API
                     }
                 });
             });
-
+           
+            
             // FluentValidation
             builder.Services.AddValidatorsFromAssemblyContaining<CreateUserDTOValidator>();
             builder.Services.AddValidatorsFromAssemblyContaining<UpdateUserDTOValidator>();
+            builder.Services.AddValidatorsFromAssemblyContaining<MedicinePostDTOValidator>();
             builder.Services.AddFluentValidationAutoValidation();
 
             builder.Services.AddPersistenceServices();
             builder.Services.AddApplicationServices();
-
+           
             var app = builder.Build();
 
             if (app.Environment.IsDevelopment())
@@ -92,9 +99,9 @@ namespace Final.API
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
+         /*   app.UseEndpoints();*/
             app.UseHttpsRedirection();
-        /*    app.UseMiddleware<ExceptionMiddleware>();*/
+            app.UseMiddleware<ExceptionMiddleware>();
             app.UseAuthentication();
             app.UseAuthorization();
 

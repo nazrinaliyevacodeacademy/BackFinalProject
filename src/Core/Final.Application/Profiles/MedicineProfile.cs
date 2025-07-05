@@ -12,16 +12,7 @@ namespace Final.Application.Profiles
 {
   public class MedicineProfile:Profile
     {
-        /*    public class MappingProfile : Profile
-            {
-                public MappingProfile()
-                {
-                    CreateMap<User, UserDto>().ReverseMap();
-                    CreateMap<Medicine, MedicineDto>().ReverseMap();
-                    CreateMap<Prescription, PrescriptionDto>().ReverseMap();
-                }
-            }
-    */
+    
         /*public class MappingProfile : Profile
         {
             public MappingProfile()
@@ -51,7 +42,7 @@ namespace Final.Application.Profiles
         {
           
             CreateMap<Medicine,MedicineGetDTO>().ReverseMap();
- 
+            CreateMap<Medicine, MedicinePostDTO>().ReverseMap();
 
         }
     }

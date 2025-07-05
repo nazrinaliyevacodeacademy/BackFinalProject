@@ -10,6 +10,7 @@ using MediatR;
 
 namespace Final.Application.Features.Queries.Medicines.GetMedicineById;
 
+
 public class GetMedicineByIdQueryHandler : IRequestHandler<GetMedicineByIdQueryRequest, GetMedicineByIdQueryResponse>
 {
     private readonly IMedicineService _service;
@@ -21,12 +22,12 @@ public class GetMedicineByIdQueryHandler : IRequestHandler<GetMedicineByIdQueryR
 
     public async Task<GetMedicineByIdQueryResponse> Handle(GetMedicineByIdQueryRequest request, CancellationToken cancellationToken)
     {
-      MedicineGetDTO medicineGetDTO= await _service.GetMedicineByIdAsync(request.Id,request.IsTracking);
+        MedicineGetDTO medicineGetDTO = await _service.GetMedicineByIdAsync(request.Id);
         GetMedicineByIdQueryResponse response = new()
         {
             MedicineGetDTO = medicineGetDTO,
             statusCode = (int)HttpStatusCode.OK
         };
-        return response;    
+        return response;
     }
 }

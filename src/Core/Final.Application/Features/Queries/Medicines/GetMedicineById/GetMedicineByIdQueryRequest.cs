@@ -9,6 +9,6 @@ namespace Final.Application.Features.Queries.Medicines.GetMedicineById;
 public class GetMedicineByIdQueryRequest:IRequest<GetMedicineByIdQueryResponse>
 {
    public  Guid Id { get; set; }   
-public bool IsTracking {  get; set; }   
+
  
 }
