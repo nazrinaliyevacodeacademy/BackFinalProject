@@ -9,7 +9,6 @@ using NLog.Internal;
 
 namespace Final.Persistence 
 {
-
     public static class ConfigManager
     {
         public static ConfigurationManager Config
@@ -27,7 +26,7 @@ namespace Final.Persistence
         {
         get
         {
-                return Config.GetConnectionString("DefaultItem");
+                return Config.GetConnectionString("Default");
          }
         }
     }

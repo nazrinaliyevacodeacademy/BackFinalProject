@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
 using Final.Domain.Entities.Common;
-using Umbraco.Core.Persistence;
-using Final.Persistence.Contexts;
 using Final.Application.Abstraction.Repositories;
 
 namespace Final.Persistence.Concretes.Repositories

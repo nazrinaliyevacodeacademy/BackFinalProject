@@ -1,5 +1,3 @@
-using Final.Application.Profiles;
-using Final.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Final.Persistence;
 using Final.Application;
@@ -15,6 +13,8 @@ using Final.API.Middlewares;
 using Final.Application.Validators.Medicine;
 using Microsoft.Extensions.DependencyInjection;
 using Final.Application.Features.Commands.Users.CreateUser;
+using Final.Application.Validators.Prescription;
+using Microsoft.AspNetCore.Builder;
 
 namespace Final.API
 {
@@ -87,6 +87,8 @@ namespace Final.API
             builder.Services.AddValidatorsFromAssemblyContaining<CreateUserDTOValidator>();
             builder.Services.AddValidatorsFromAssemblyContaining<UpdateUserDTOValidator>();
             builder.Services.AddValidatorsFromAssemblyContaining<MedicinePostDTOValidator>();
+            builder.Services.AddValidatorsFromAssemblyContaining<CreatePrescriptionDTOValidator>();
+            builder.Services.AddValidatorsFromAssemblyContaining<PrescriptionItemDtoValidator>();
             builder.Services.AddFluentValidationAutoValidation();
 
             builder.Services.AddPersistenceServices();
@@ -98,8 +100,8 @@ namespace Final.API
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
-            }
-         /*   app.UseEndpoints();*/
+            }/*
+            app.UseEndpoints();*/
             app.UseHttpsRedirection();
             app.UseMiddleware<ExceptionMiddleware>();
             app.UseAuthentication();

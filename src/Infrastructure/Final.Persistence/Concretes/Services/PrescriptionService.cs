@@ -1,49 +1,113 @@
-﻿/*using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Final.Application.Abstraction.Repositories;
 using Final.Application.Abstraction.Services;
 using Final.Application.DTOs.Prescription;
 using Final.Domain.Entities;
-using Final.Persistence.Contexts;
+using Microsoft.EntityFrameworkCore;
 
-namespace Final.Persistence.Concretes.Services;
-public class PrescriptionService : IPrescriptionService
+namespace Final.Persistence.Concretes.Services
 {
-    private readonly FinalDbContext _context;
-
-    public PrescriptionService(FinalDbContext context)
+    public class PrescriptionService : IPrescriptionService
     {
-        _context = context;
-    }
+        private readonly IPrescriptionReadRepository _readRepository;
+        private readonly IPrescriptionWriteRepository _writeRepository;
 
-    public async Task CreateAsync(CreatePrescriptionDTO dto)
-    {
-        var prescription = new Prescription
+        public PrescriptionService(IPrescriptionReadRepository readRepository, IPrescriptionWriteRepository writeRepository)
         {
-            Id = Guid.NewGuid(),
-            DoctorId = dto.DoctorId,
-            PatientId = dto.PatientId,
-            PrescriptionMedicines = dto.Items.Select(item => new PrescriptionMedicine
+            _readRepository = readRepository;
+            _writeRepository = writeRepository;
+        }
+
+        public async Task<Guid?> CreateAsync(CreatePrescriptionDTO dto)
+        {
+            var prescription = new Prescription
             {
-                MedicineId = item.MedicineId,
-                Quantity = item.Quantity
-            }).ToList()
-        };
+                Id = Guid.NewGuid(),
+                PatientId = dto.PatientId,
+                DoctorId = dto.DoctorId,
+                IssuedAt = DateTime.UtcNow,
+                PrescriptionMedicines = dto.Medicines.Select(m => new PrescriptionMedicine
+                {
+                    MedicineId = m.MedicineId,
+                    Quantity = m.Quantity
+                }).ToList()
+            };
 
-        _context.Prescriptions.Add(prescription);
-        await _context.SaveChangesAsync();
-    }
+            await _writeRepository.CreateAsync(prescription);
+            return prescription.Id;
+        }
 
-    public Task<List<CreatePrescriptionDTO>> GetAllAsync()
-    {
-        throw new NotImplementedException();
-    }
+        public async Task<List<PrescriptionDto>> GetAllAsync()
+        {
+            var list = await _readRepository.Table
+                .Include(p => p.PrescriptionMedicines)
+                .ThenInclude(pm => pm.Medicine)
+                .ToListAsync();
 
-    public Task<CreatePrescriptionDTO> GetByIdAsync(Guid id)
-    {
-        throw new NotImplementedException();
+            return list.Select(p => new PrescriptionDto
+            {
+                Id = p.Id,
+                PatientId = p.PatientId,
+                DoctorId = p.DoctorId,
+               /* CreatedDate = p.CreatedDate,*/
+                Medicines = p.PrescriptionMedicines.Select(pm => new PrescriptionItemDto
+                {
+                    MedicineId = pm.MedicineId,
+                    Quantity = pm.Quantity
+                }).ToList()
+            }).ToList();
+        }
+
+        public async Task<PrescriptionDto?> GetByIdAsync(Guid id)
+        {
+            var entity = await _readRepository.Table
+                .Include(p => p.PrescriptionMedicines)
+                .FirstOrDefaultAsync(p => p.Id == id);
+
+            if (entity is null) return null;
+
+            return new PrescriptionDto
+            {
+                Id = entity.Id,
+                PatientId = entity.PatientId,
+                DoctorId = entity.DoctorId,
+               /* CreatedDate = entity.CreatedDate,*/
+                Medicines = entity.PrescriptionMedicines.Select(pm => new PrescriptionItemDto
+                {
+                    MedicineId = pm.MedicineId,
+                    Quantity = pm.Quantity
+                }).ToList()
+            };
+        }
+
+        public async Task<bool> UpdateAsync(UpdatePrescriptionDTO dto)
+        {
+            var entity = await _readRepository.Table
+                .Include(p => p.PrescriptionMedicines)
+                .FirstOrDefaultAsync(p => p.Id == dto.Id);
+
+            if (entity is null) return false;
+
+            entity.DoctorId = dto.DoctorId;
+            entity.PatientId = dto.PatientId;
+            entity.PrescriptionMedicines = dto.Medicines.Select(m => new PrescriptionMedicine
+            {
+                MedicineId = m.MedicineId,
+                Quantity = m.Quantity
+            }).ToList();
+
+            await _writeRepository.UpdateAsync(entity);
+            return true;
+        }
+
+        public async Task<bool> DeleteAsync(Guid id)
+        {
+            await _writeRepository.DeleteAsync(id);
+            return true;
+        }
+
+        Task<Guid> IPrescriptionService.CreateAsync(CreatePrescriptionDTO dto)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
-*/

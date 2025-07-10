@@ -1,4 +1,4 @@
-﻿/*using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +8,7 @@ using MediatR;
 
 namespace Final.Application.Features.Queries.Prescriptions.GetAllPrescriptions
 {
-    public class GetAllPrescriptionsQuery:IRequest<List<CreatePrescriptionDTO>>
+    public class GetAllPrescriptionsQueryRequest:IRequest<List<PrescriptionDto>>
     {
     }
-}*/
+}

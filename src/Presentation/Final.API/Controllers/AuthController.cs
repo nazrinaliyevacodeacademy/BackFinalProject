@@ -32,7 +32,11 @@ namespace Final.API.Controllers
             var result = await _authService.LoginAsync(dto);
             if (!result.Success)
                 return Unauthorized(result.Message);
-            return Ok(result);
+            return Ok(new
+            {
+                token = result.Token,
+                expireAt = result.ExpireAt
+            });
         }
 
     }

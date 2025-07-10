@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Final.Application.Abstraction.Services;
 using Final.Application.DTOs.Auth;
 using Final.Domain.Entities;
-using Final.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
 using BCrypt.Net;
 using Org.BouncyCastle.Crypto.Generators;

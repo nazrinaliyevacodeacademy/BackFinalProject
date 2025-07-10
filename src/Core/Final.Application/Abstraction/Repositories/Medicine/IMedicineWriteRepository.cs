@@ -9,8 +9,5 @@ namespace Final.Application.Abstraction.Repositories;
 
 public interface IMedicineWriteRepository : IWriteRepository<Medicine>
 {
-   
     void Delete(Medicine medicine);
-  
- 
 }

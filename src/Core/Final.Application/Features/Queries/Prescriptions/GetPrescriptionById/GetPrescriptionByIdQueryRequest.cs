@@ -1,4 +1,4 @@
-﻿/*using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +8,8 @@ using MediatR;
 
 namespace Final.Application.Features.Queries.Prescriptions.GetPrescriptionById
 {
-    public class GetPrescriptionByIdQueryRequest:IRequest<CreatePrescriptionDTO>
+    public class GetPrescriptionByIdQueryRequest : IRequest<PrescriptionDto>
     {
         public Guid Id { get; set; }
     }
 }
-*/

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Final.Application.Abstraction.Repositories;
 using Final.Domain.Entities;
 using Final.Persistence.Concretes.Repositories;
-using Final.Persistence.Contexts;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 namespace Final.Persistence.Concretes.Repositories

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Final.Domain.Entities.Common;
-using Final.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Umbraco.Core.Persistence;
 

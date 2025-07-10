@@ -10,13 +10,8 @@ public class CreatePrescriptionDTO
 
     public Guid DoctorId { get; set; }
     public Guid PatientId { get; set; }
-    public List<PrescriptionItemDto> Items { get; set; } = new();
+    public List<PrescriptionItemDto> Medicines{ get; set; } = new();
 
 }
-public class PrescriptionItemDto
-{
-    public Guid MedicineId { get; set; }
-    public int Quantity { get; set; }
-}
 
-
+   

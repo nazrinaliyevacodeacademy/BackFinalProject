@@ -4,9 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Final.Domain.Entities;
-
-
-using Final.Persistence.Contexts;
 using Final.Application.Abstraction.Repositories;
 
 namespace Final.Persistence.Concretes.Repositories;

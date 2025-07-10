@@ -14,6 +14,7 @@ namespace Final.Application
         public static void AddApplicationServices(this IServiceCollection services)
         {
             services.AddAutoMapper(typeof(MedicineProfile).Assembly);
+/**/
             services.AddMediatR(cfg =>
             {
                 cfg.RegisterServicesFromAssembly(typeof(ServiceRegistration).Assembly);

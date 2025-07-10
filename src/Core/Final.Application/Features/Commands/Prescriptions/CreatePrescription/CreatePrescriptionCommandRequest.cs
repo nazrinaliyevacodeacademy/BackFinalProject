@@ -1,4 +1,4 @@
-﻿/*using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +8,8 @@ using MediatR;
 
 namespace Final.Application.Features.Commands.Prescriptions.CreatePrescription
 {
-    public class CreatePrescriptionCommandRequest:IRequest
+    public class CreatePrescriptionCommandRequest : IRequest<CreatePrescriptionCommandResponse>
     {
         public CreatePrescriptionDTO Dto { get; set; }
     }
-}*/
+}

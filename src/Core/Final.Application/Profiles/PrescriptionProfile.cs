@@ -14,6 +14,8 @@ namespace Final.Application.Profiles
         public PrescriptionProfile()
         {
             CreateMap<Prescription, CreatePrescriptionDTO>().ReverseMap();
+            CreateMap<Prescription, PrescriptionDto>().ReverseMap();
+            CreateMap<PrescriptionMedicine, PrescriptionItemDto>().ReverseMap();
         }
     }
 }

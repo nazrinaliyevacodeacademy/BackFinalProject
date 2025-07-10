@@ -1,6 +1,8 @@
-﻿namespace Final.Domain.Entities;
+﻿using Final.Domain.Entities.Common;
 
-public class PrescriptionMedicine
+namespace Final.Domain.Entities;
+
+public class PrescriptionMedicine:BaseEntity
 {
     public Guid PrescriptionId { get; set; }
     public Guid MedicineId { get; set; }

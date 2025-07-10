@@ -10,5 +10,5 @@ public enum  UserRole
 {
     Doctor,
     Patient,
-    Pharmacist,
+    Admin,
 }
